@@ -28,7 +28,7 @@ public class TestGmailAPI{
     private static HttpTransport HTTP_TRANSPORT;
 
     private static final List<String> SCOPES =
-            Arrays.asList(GmailScopes.GMAIL_READONLY);
+            Arrays.asList(GmailScopes.GMAIL_SETTINGS_SHARING);
 
     static {
         try {
@@ -61,10 +61,8 @@ public class TestGmailAPI{
 
     public static void main(String[] args) throws IOException {
         Gmail service = getGmailService();
-
         //Print the email of the user
-        String user = "me";
-        System.out.println(service.users().getProfile(user).execute().getEmailAddress());
+        System.out.println(service.users().getProfile("me").execute().getEmailAddress());
 
     }
 }
